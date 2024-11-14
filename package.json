@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "readjson": "^2.2.2",
+    "writejson": "^3.0.0"
+  }
+}
