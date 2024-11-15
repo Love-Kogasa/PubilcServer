@@ -6,7 +6,7 @@ PubilcServer 计划所收集到的数据全部公开，供所有开发者使用�
 # TODO
 * 计数器API ✓
 * IPAPI ✓
-* HTTP请求转接api
+* HTTP请求转接api(跨域) ✓
 * 免费 VFS
 * ...
 # 赞助(我会分发给所有参与开发者)

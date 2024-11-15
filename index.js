@@ -3,7 +3,8 @@ const express = require( "express" ),
   readjson = require( "readjson" ),
   writejson = require( "writejson" ),
   url = require( "url" ),
-  cors = require( "cors" )
+  cors = require( "cors" ),
+  request = require( "sync-request" )
 
 function searchurl( u ){
    var search = {}
@@ -48,6 +49,14 @@ app.get( "/ip", function( req, res ){
       ip: req.ip,
       ipv4: req.ip.match( /(\d{0,3}\.){3}\d{0,3}/ )[0]
    } ) )
+})
+
+app.get( "/request", function( req, res ){
+   var search = searchurl( req.url )
+   var reqip = search.host || "https://example.com"
+   var result = request( "GET", reqip )
+   res.set( result.headers )
+   res.send( result.body )
 })
 
 app.listen( 8080, function(){
