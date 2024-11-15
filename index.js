@@ -59,6 +59,16 @@ app.get( "/request", function( req, res ){
    res.send( result.body )
 })
 
-app.listen( 8080, function(){
-   console.log( "http://127.0.0.1:8080" )
+app.post( "/request", function( req, res ){
+   var search = searchurl( req.url )
+   var reqip = search.host || "https://example.com"
+   var result = request( "POST", reqip )
+   res.set( result.headers )
+   res.send( result.body )
 })
+
+app.listen( process.env.PORT || 3030, function(){
+   console.log( "http://127.0.0.1:3030" )
+})
+
+//module.exports = app
