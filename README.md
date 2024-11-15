@@ -5,6 +5,7 @@ PubilcServer 计划所收集到的数据全部公开，供所有开发者使用�
 前端的js库在*client*目录
 # TODO
 * 计数器API ✓
+* IPAPI ✓
 * HTTP请求转接api
 * 免费 VFS
 * ...

@@ -43,6 +43,13 @@ app.get( "/number", function( req, res ){
    res.send( JSON.stringify( dt ) )
 })
 
+app.get( "/ip", function( req, res ){
+   res.send( JSON.stringify( {
+      ip: req.ip,
+      ipv4: req.ip.match( /(\d{0,3}\.){3}\d{0,3}/ )[0]
+   } ) )
+})
+
 app.listen( 8080, function(){
    console.log( "http://127.0.0.1:8080" )
 })
