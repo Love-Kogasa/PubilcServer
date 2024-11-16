@@ -1,5 +1,6 @@
 # PublicServer Client
 The client of PublicServer API.  
+My english is not well, i am sorry.
 ## what is PublicServer API
 PublicServer is an free API for all front-end and localapp coder to do some thing that must have an server, like as send an truly http request or write a vote site.  
 The all func of PublicServer isnt need an key or signup at now, so u don't need do anything. Just request it, that's no problem.  
