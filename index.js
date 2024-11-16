@@ -4,7 +4,8 @@ const express = require( "express" ),
   writejson = require( "writejson" ),
   url = require( "url" ),
   cors = require( "cors" ),
-  request = require( "sync-request" )
+  request = require( "sync-request" ),
+  path = require( "path" )
 
 function searchurl( u ){
    var search = {}
@@ -18,16 +19,16 @@ function searchurl( u ){
 var app = express()
 app.use( cors() )
 
-app.use( "/static", express.static( "static" ) )
-app.use( "/client", express.static( "client" ) )
+app.use( "/static", express.static( __dirname + "/static" ) )
+app.use( "/client", express.static( __dirname + "/client" ) )
 
 app.get( "/", function( req, res ){
-   res.send( fs.readFileSync( "./static/index.html" ).toString() )
+   res.send( fs.readFileSync( path.join( __dirname, "./static/index.html" ) ).toString() )
 })
 
 app.get( "/number", function( req, res ){
    var search = searchurl( req.url )
-   var dt = readjson.sync( "./public/number.json" )
+   var dt = readjson.sync( path.join( __dirname, "/public/number.json" ) )
    if( search[ "id" ] ){
       if( dt[ search[ "id" ] ] == null ){
          dt[ search[ "id" ] ] = 0
@@ -40,7 +41,7 @@ app.get( "/number", function( req, res ){
          }
       }
    }
-   writejson.sync( "./public/number.json", dt )
+   writejson.sync( path.join( __dirname + "/public/number.json" ), dt )
    res.send( JSON.stringify( dt ) )
 })
 
@@ -67,8 +68,8 @@ app.post( "/request", function( req, res ){
    res.send( result.body )
 })
 
-app.listen( process.env.PORT || 3000, function(){
-   console.log( "http://127.0.0.1:3000" )
+app.listen( process.env.PORT || 3030, function(){
+   console.log( "http://127.0.0.1:3030" )
 })
 
-//module.exports = app
+module.exports = app
