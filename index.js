@@ -67,8 +67,8 @@ app.post( "/request", function( req, res ){
    res.send( result.body )
 })
 
-app.listen( process.env.PORT || 3030, function(){
-   console.log( "http://127.0.0.1:3030" )
+app.listen( process.env.PORT || 3000, function(){
+   console.log( "http://127.0.0.1:3000" )
 })
 
 //module.exports = app
