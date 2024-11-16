@@ -11,7 +11,7 @@ function searchurl( u ){
    var search = {}
    for( let param of (url.parse( u ).query || "null=yes").split( "&" ) ){
       let [ key, value ] = param.split( "=" )
-      search[ decodeURI( key ) ] = decodeURI( value )
+      search[ decodeURIComponent( key ) ] = decodeURIComponent( value )
    }
    return search
 }
