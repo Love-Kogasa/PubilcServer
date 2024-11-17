@@ -6,7 +6,8 @@ const express = require( "express" ),
   cors = require( "cors" ),
   request = require( "sync-request" ),
   path = require( "path" ),
-  bodyParser = require( "body-parser" )
+  bodyParser = require( "body-parser" ),
+  mailer = require( "nodemailer" )
 
 function searchurl( u ){
    var search = {}
@@ -60,6 +61,29 @@ app.get( "/request", function( req, res ){
    var result = request( "GET", reqip )
    res.set( result.headers )
    res.send( result.body )
+})
+
+app.get( "/mail", function( req, res ){
+   res.send( "Please send post request to request this api" )
+})
+
+app.post( "/mail", function( req, res ){
+   mailer.createTransport({
+      host : req.body.host,
+      auth : {
+         user : req.body.uname,
+         pass : req.body.pw
+      }
+   }).sendMail({
+      from : req.body.from || req.body.uname,
+      to : req.body.to,
+      subject : req.body.subject,
+      html : req.body.body
+   }, ( e, info ) => {
+      e ?
+        res.send( JSON.stringofy({statu: "error", error: e}) ) :
+        res.send( JSON.stringofy({statu: "success", info: info}) )
+   })
 })
 
 app.post( "/request", function( req, res ){
