@@ -1,0 +1,29 @@
+{
+  "name": "public-server-api",
+  "version": "1.0.1",
+  "description": "Client of PublicServer API\t, that will make u can do some must have an server thing like as send a truly http request just in front-end and browser now!",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Love-Kogasa/PubilcServer.git#main"
+  },
+  "keywords": [
+    "http",
+    "request",
+    "counter",
+    "api",
+    "ip",
+    "ipv4",
+    "free",
+    "public"
+  ],
+  "author": " (Github: Love-Kogasa, Email: 1983997053@qq.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Love-Kogasa/PubilcServer/issues"
+  },
+  "homepage": "https://github.com/Love-Kogasa/PubilcServer/tree/main#readme"
+}

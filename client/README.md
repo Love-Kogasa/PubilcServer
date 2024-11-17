@@ -22,12 +22,30 @@ Here is an simple example
   alert( await response.text() )
 })()
 ```
-I want to make an public FVS( virtual filesystem ) api, that will be very nice, right?.  
+
+And I made a mail api (SMTP), that will help u send an email in front-end
+```js
+var myserver = new PublicServer()
+myserver.mail( {
+   host: "smtp.xxx.com",
+   uname: "user@xxx.com",
+   pw: "password",
+   subject: "TestEmailAPI",
+   to: "friend@xxx.com",
+   body: "<b>body of your mail with html support</b>"
+}).then( ( data ) => {
+   if( statu === "error" ){
+      console.table( error )
+   } else {
+      console.log( statu )
+   }
+})
+```
 
 Ip API example
 ```js
 var myserver = new PublicServer()
-// If this way always return 127.0.0.1, please use `new PublicServer( "http://public-server.vercel.app" )` or `https://pubilc-server-guw1n1jm4-love-kogasas-projects.vercel.app" )`
+// If this way always return 127.0.0.1, please use `new PublicServer( "https://pubilc-server-guw1n1jm4-love-kogasas-projects.vercel.app" )`
 myserver.ip().then( dt => console.log( dt.ipv4 ) )
 // "dt" is an object contain ip and ipv4
 ```

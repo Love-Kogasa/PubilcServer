@@ -16,6 +16,15 @@ class PublicServer {
    async request( url = "https://example.com", setting ){
       return await fetch( this.server + "/request?host=" + encodeURIComponent( url ), setting )
    }
+   async mail( setting ){
+      return await (await fetch( this.server + "/mail", {
+         method : "POST",
+         headers : {
+           'Content-Type': 'application/json'
+         },
+         body : JSON.stringify( setting )
+      } )).json()
+   }
    async cat( url = "https://example.com", method = "GET" ){
       return await (await this.request( url, {method} )).text()
    }
