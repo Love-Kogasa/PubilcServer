@@ -5,7 +5,8 @@ const express = require( "express" ),
   url = require( "url" ),
   cors = require( "cors" ),
   request = require( "sync-request" ),
-  path = require( "path" )
+  path = require( "path" ),
+  bodyParser = require( "body-parser" )
 
 function searchurl( u ){
    var search = {}
@@ -18,6 +19,7 @@ function searchurl( u ){
 
 var app = express()
 app.use( cors() )
+app.use( bodyParser.json() )
 
 app.use( "/static", express.static( __dirname + "/static" ) )
 app.use( "/client", express.static( __dirname + "/client" ) )
@@ -63,7 +65,9 @@ app.get( "/request", function( req, res ){
 app.post( "/request", function( req, res ){
    var search = searchurl( req.url )
    var reqip = search.host || "https://example.com"
-   var result = request( "POST", reqip )
+   var result = request( "POST", reqip, {
+      json: req.body
+   } )
    res.set( result.headers )
    res.send( result.body )
 })
