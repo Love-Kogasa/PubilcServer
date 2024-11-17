@@ -34,10 +34,10 @@ myserver.mail( {
    to: "friend@xxx.com",
    body: "<b>body of your mail with html support</b>"
 }).then( ( data ) => {
-   if( statu === "error" ){
-      console.table( error )
+   if( data.statu === "error" ){
+      console.table( data.error )
    } else {
-      console.log( statu )
+      console.log( data.statu )
    }
 })
 ```
