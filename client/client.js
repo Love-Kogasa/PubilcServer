@@ -2,12 +2,18 @@ class PublicServer {
    constructor( node = "https://publicserver.n-project.us.kg" ){
       this.server = node
       this.params = (function(){
-         var url = new URL( window.location.href )
          var retv = {}
-         if( url.search !== "" ){
-            for( let param of url.search.slice( 1 ).split( "&" ) ){
-               let [key,value] = param.split( "=" )
-               retv[ decodeURIComponent( key ) ] = decodeURIComponent( value )
+         try {
+            var url = new URL( window.location.href )
+            if( url.search !== "" ){
+               for( let param of url.search.slice( 1 ).split( "&" ) ){
+                  let [key,value] = param.split( "=" )
+                  retv[ decodeURIComponent( key ) ] = decodeURIComponent( value )
+               }
+            }
+         } catch(err) {
+            for( let param of process.argv.slice(2)){
+               let [key, value] = param.split( "=" )
             }
          }
          return retv
@@ -25,8 +31,18 @@ class PublicServer {
          body : JSON.stringify( setting )
       } )).json()
    }
-   async cat( url = "https://example.com", method = "GET" ){
-      return await (await this.request( url, {method} )).text()
+   async cat( url = "https://example.com", method = "GET", data = {} ){
+      var setting = {method, headers : {
+         'Content-Type': 'application/json'
+      }}
+      if( method.toLowerCase() === "post" ){
+         setting.body = JSON.stringify( data )
+      }
+      if( method.toLowerCase() === "post" ){
+         return await (await this.request( url, setting )).text()
+      } else {
+         return await (await this.request( url )).text()
+      }
    }
    async number( single = true, id = "test", add = "none" ){
       var dt = (await fetch( this.server + "/number?id=" + encodeURIComponent( id ) + "&add=" + encodeURIComponent( add ) )).json()

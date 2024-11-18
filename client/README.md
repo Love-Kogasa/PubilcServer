@@ -6,6 +6,18 @@ PublicServer is an free API for all front-end and localapp coder to do some thin
 The all func of PublicServer isnt need an key or signup at now, so u don't need do anything. Just request it, that's no problem.  
 PublicServer API is currently maintained by N-Project( it's formed by me ), but infact this project just has one coder that's my own(host use my vercel, I am no full money to buy an host server because I am a student), my friends provide that domain:(.  
 If u like this project, u can sponsor me on WeChat with CNY:(
+## Install
+In the version 1.0.3, you can use this module on both browser and node runtime.  
+There are two ways to install this module.  
+Use npm cmd
+```bash
+npm install public-server-api
+```
+You can also manually download this module from CDN.  
+Use on browser and use CDN to install:
+```html
+<script src="https://publicserver.n-project.us.kg/client/client.js"></script>
+```
 ## Document
 ~~Do you think I talk too mach, I think so~~  
 Let's go, my favorite func that is We can use API to send truly http request now.  
@@ -16,11 +28,16 @@ Here is an simple example
   alert( await myserver.cat( "https://example.com" ))
   // a easy way to get site body as string
   
-  // The another way
+  // The another way for request site, it's same as H5 `fetch` API
   var response = await myserver.request( "https://example.com" )
-  // a response object same as fetch will be returned
   alert( await response.text() )
 })()
+```
+In version 1.0.3, the `cat` method supports sending post requests with datas. For example
+```js
+var text = await myserver.cat( "https://example.com", "POST", {
+  name : "114514"
+} )
 ```
 
 And I made a mail api (SMTP), that will help u send an email in front-end
@@ -29,6 +46,8 @@ var myserver = new PublicServer()
 myserver.mail( {
    host: "smtp.xxx.com",
    uname: "user@xxx.com",
+   // from : "from@xxx.com",
+   // ↑ If don't set this option, that will be samed as uname
    pw: "password",
    subject: "TestEmailAPI",
    to: "friend@xxx.com",
@@ -42,6 +61,12 @@ myserver.mail( {
 })
 ```
 
+If u want to get your page request params from url. u can use value `params`
+```js
+console.table( new PublicServer().params )
+// If u use node runtime, This value will get params from cmd line arguments.
+```
+
 Ip API example
 ```js
 var myserver = new PublicServer()
@@ -50,7 +75,8 @@ myserver.ip().then( dt => console.log( dt.ipv4 ) )
 // "dt" is an object contain ip and ipv4
 ```
 
-Counter API example
+Counter API example.  
+This api can't run with default api server now, because I use vercel host for API server, server will run on read-only filesystem
 ```js
 var myserver = new PublicServer()
 myserver.number( false ).then( console.table )
