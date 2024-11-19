@@ -1,4 +1,6 @@
 # PublicServer Client
+[Chinese 简体中文](https://github.com/Love-Kogasa/PublicServer/blob/main/client/README_ZH.md)  
+↑I wrote it in my parent language, so translating it may actually be easier to understand.！  
 The client of PublicServer API.  
 My english is not well, i am sorry.
 ## what is PublicServer API
@@ -67,6 +69,23 @@ console.table( new PublicServer().params )
 // If u use node runtime, This value will get params from cmd line arguments.
 ```
 
+dns API and a simple socket api example
+```js
+var myserver = new PublicServer()
+var readdt = await readSocket(
+  (await dnsParse( "example.com" )
+  /* 返回 domain(域名) 和 data */ ).data[0] + ":8080" /*,
+  1 默认为1, 表示在第多少次的时候返回数据*/
+)
+
+if( readdt.statu == error ){
+  console.table( readdt.error )
+} else {
+  console.table( readdt.data )
+  // 返回data是一个数组，表示接听到的内容，数组每个成员都包含string与buffer(数组)两个对象
+}
+```
+
 Ip API example
 ```js
 var myserver = new PublicServer()
@@ -76,7 +95,7 @@ myserver.ip().then( dt => console.log( dt.ipv4 ) )
 ```
 
 Counter API example.  
-This api can't run with default api server now, because I use vercel host for API server, server will run on read-only filesystem
+This api can't run with default api server now, because I use vercel for API server, server will run on read-only filesystem
 ```js
 var myserver = new PublicServer()
 myserver.number( false ).then( console.table )

@@ -1,7 +1,7 @@
 {
   "name": "public-server-api",
-  "version": "1.0.1",
-  "description": "Client of PublicServer API\t, that will make u can do some must have an server thing like as send a truly http request just in front-end and browser now!",
+  "version": "1.0.4",
+  "description": "The client-side JS module of PublicServer API is used to implement some backend functions in the front-end, such as sending real HTTP requests instead of AJAX",
   "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/Love-Kogasa/PubilcServer.git#main"
   },
   "keywords": [
+    "frontend",
     "http",
     "request",
     "counter",

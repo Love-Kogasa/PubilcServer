@@ -44,6 +44,12 @@ class PublicServer {
          return await (await this.request( url )).text()
       }
    }
+   async readSocket( ip, count = 0 ){
+      return ((await fetch( this.server + "/ipc?ip=" + encodeURIComponent( ip ) + "&count=" + encodeURIComponent( count ) )).json())
+   }
+   async dnsParse( domain ){
+      return ((await fetch( this.server + "/dns?domain=" + encodeURIComponent( domain ) )).json())
+   }
    async number( single = true, id = "test", add = "none" ){
       var dt = (await fetch( this.server + "/number?id=" + encodeURIComponent( id ) + "&add=" + encodeURIComponent( add ) )).json()
       if( single ){
