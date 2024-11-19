@@ -1,5 +1,5 @@
 # PublicServer Client
-[Chinese 简体中文](https://github.com/Love-Kogasa/PublicServer/blob/main/client/README_ZH.md)  
+[Chinese 简体中文](https://github.com/Love-Kogasa/PubilcServer/blob/main/client/README_ZH.md)  
 ↑I wrote it in my parent language, so translating it may actually be easier to understand.！  
 The client of PublicServer API.  
 My english is not well, i am sorry.
