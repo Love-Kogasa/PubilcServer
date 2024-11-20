@@ -1,4 +1,5 @@
 # PublicServer Project
+[APIDOC](https://github.com/Love-Kogasa/PubilcServer/blob/main/api.md).  
 PublicServer 计划，为所有前端与客户端开发者，无服务端提供的免费，开源 "公共服务器"  
 PubilcServer 计划所收集到的数据全部公开，供所有开发者使用，也希望大家不要乱用，一起铸就这个伟大的api  
 最初由 @love-kogasa 提出，现由 N-Project 开发中.  
